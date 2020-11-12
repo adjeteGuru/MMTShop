@@ -27,7 +27,10 @@ namespace MMTShopApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             //this service is to inject throw IConfiguration connection string for the dbcontext
             services.AddDbContext<MMTShopContext>(options =>

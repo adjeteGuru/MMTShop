@@ -85,37 +85,37 @@ namespace MMTShopApi.Database
                     Price = 20,
                     },
 
-                    new Product
-                    {
-                    SKU = "2GDLM",
-                    Name = "Lawnmower",
-                    Description = "use to cut grass",
-                    Price = 55,
-                    },
+                    //new Product
+                    //{
+                    //SKU = "2GDLM",
+                    //Name = "Lawnmower",
+                    //Description = "use to cut grass",
+                    //Price = 55,
+                    //},
 
-                    new Product
-                    {
-                    SKU = "3ELSA",
-                    Name = "Samsung 55 UHD TV",
-                    Description = "latest 7 series of 4k definition tv",
-                    Price = 395,
-                    },
+                    //new Product
+                    //{
+                    //SKU = "3ELSA",
+                    //Name = "Samsung 55 UHD TV",
+                    //Description = "latest 7 series of 4k definition tv",
+                    //Price = 395,
+                    //},
 
-                    new Product
-                    {
-                    SKU = "4FSTM",
-                    Name = "Tredmill",
-                    Description = "user friendly runner",
-                    Price = 295,
-                    },
+                    //new Product
+                    //{
+                    //SKU = "4FSTM",
+                    //Name = "Tredmill",
+                    //Description = "user friendly runner",
+                    //Price = 295,
+                    //},
 
-                    new Product
-                    {
-                    SKU = "5TYIR",
-                    Name = "IRobot",
-                    Description = "motion detect friendly artifitial intelligent robot",
-                    Price = 99,
-                    },
+                    //new Product
+                    //{
+                    //SKU = "5TYIR",
+                    //Name = "IRobot",
+                    //Description = "motion detect friendly artifitial intelligent robot",
+                    //Price = 99,
+                    //},
             };
 
             return products;
