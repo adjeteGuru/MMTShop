@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MMTShopApi.Database;
 
 namespace MMTShopApi
 {
@@ -25,7 +27,17 @@ namespace MMTShopApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+            //this service is to inject throw IConfiguration connection string for the dbcontext
+            services.AddDbContext<MMTShopContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MMTShopBD"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +58,9 @@ namespace MMTShopApi
             {
                 endpoints.MapControllers();
             });
+
+            //pass app object that is available 
+            SeedData.EnsureSeedData(app);
         }
     }
 }
