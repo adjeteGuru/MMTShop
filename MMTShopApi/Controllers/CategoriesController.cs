@@ -46,22 +46,6 @@ namespace MMTShopApi.Controllers
             return category;
         }
 
-        ////try this
-        //// GET: api/Categories/5/product
-        //[HttpGet("{id:int}/product")]
-        //public async Task<ActionResult<Product>> GetProducts(int id)
-        //{
-        //    var category = await _context.Categories
-        //        .Include(x => x.Products)
-        //        .FirstOrDefaultAsync(x => x.Id == id);
-
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(category.Products);
-        //}
 
 
         // PUT: api/Categories/5
@@ -128,5 +112,24 @@ namespace MMTShopApi.Controllers
         {
             return _context.Categories.Any(e => e.Id == id);
         }
+
+
+
+        // GET: api/Categories/5/product
+        [HttpGet("{id:int}/product")]
+        public async Task<ActionResult> GetCategories(int id)
+        {
+            var category = await _context.Categories
+                .Include(x => x.Products)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(category.Products);
+        }
+
     }
 }
