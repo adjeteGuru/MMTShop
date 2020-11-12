@@ -31,7 +31,10 @@ namespace MMTShopApi
 
             //this service is to inject throw IConfiguration connection string for the dbcontext
             services.AddDbContext<MMTShopContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MMTShopBD")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MMTShopBD"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
